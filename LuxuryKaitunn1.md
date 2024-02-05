@@ -58,7 +58,7 @@ getgenv().Configs = {
         -- ["V"] = 0.1, -- อันไหนไม่เอาลบออกไปเลย
     },
     AutoSwordMastery = true,
-    SelectRaritySword = {"Mythical","Legendary","Rare"}, -- Common , Uncommon,Rare,Legendary,Mythical
+    SelectRaritySword = {"Mythical","Legendary"}, -- Common , Uncommon,Rare,Legendary,Mythical
     
     SelectRedeemCodeLevel = 1,
     
@@ -88,9 +88,9 @@ getgenv().Configs = {
     
     -- CPU
     
-    LockFPS = 60,
+    LockFPS = 35,
     LockFPSNow = true,
-    WhiteScreen = true
+    WhiteScreen = false
 }
 _G.Key = "LuxuryV2_15hz16cdxazfpa0ppamj"
 _G.DiscordId = "1122795311874711604"
