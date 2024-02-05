@@ -90,7 +90,7 @@ getgenv().Configs = {
     
     LockFPS = 60,
     LockFPSNow = true,
-    WhiteScreen = false
+    WhiteScreen = true
 }
 _G.Key = "LuxuryV2_15hz16cdxazfpa0ppamj"
 _G.DiscordId = "1122795311874711604"
