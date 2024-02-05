@@ -58,7 +58,7 @@ getgenv().Configs = {
         -- ["V"] = 0.1, -- อันไหนไม่เอาลบออกไปเลย
     },
     AutoSwordMastery = true,
-    SelectRaritySword = {"Mythical","Legendary"}, -- Common , Uncommon,Rare,Legendary,Mythical
+    SelectRaritySword = {"Mythical","Legendary","Rare"}, -- Common , Uncommon,Rare,Legendary,Mythical
     
     SelectRedeemCodeLevel = 1,
     
@@ -71,7 +71,7 @@ getgenv().Configs = {
         
     SelectMainDF = {"Dragon-Dragon","Spirit-Spirit","Venom-Venom","Dough-Dough"}, -- ผลหลักที่จะกินเเทนผลรอง
     SelectSubDF = {"Ice-Ice","Sand-Sand","Dark-Dark","Quake-Quake","Light-Light"}, -- ผลรองจะกินไว้ก่อนเเล้วพอผลหลักมีก้จะเปลียนไปกินผิดหลัก
-    AllowEatDFInventory = true,
+    AllowEatDFInventory = false,
     StartSniper = true,
         
     -- RAM
@@ -88,7 +88,7 @@ getgenv().Configs = {
     
     -- CPU
     
-    LockFPS = 35,
+    LockFPS = 30,
     LockFPSNow = true,
     WhiteScreen = false
 }
