@@ -3,7 +3,7 @@ shared.Team = "Pirates"
 getgenv().Configs = {
     FpsBoost = true,
     SkipFarm = true,
-    HopIfCantKill = false,
+    HopIfCantKill = true,
     BlockAllHop = false,
 
     FastAttack = true,
