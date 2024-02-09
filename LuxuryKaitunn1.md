@@ -1,4 +1,56 @@
+(getgenv()).Config = {
+ ["FastAttack"] = true,
+ ["ClickAttack"] = true
+} 
+
+coroutine.wrap(function()
+local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:Stop()
+    for v,v in pairs(getreg()) do
+        if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
+             for v,v in pairs(debug.getupvalues(v)) do
+                if typeof(v) == "table" then
+                    spawn(function()
+                        game:GetService("RunService").RenderStepped:Connect(function()
+                            if getgenv().Config['FastAttack'] then
+                                 pcall(function()
+                                     v.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+                                     v.activeController.attacking = false
+                                     v.activeController.increment = 4
+                                     v.activeController.blocking = false   
+                                     v.activeController.hitboxMagnitude = 150
+    		                         v.activeController.humanoid.AutoRotate = true
+    	                      	     v.activeController.focusStart = 0
+    	                      	     v.activeController.currentAttackTrack = 0
+                                     sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRaxNerous", math.huge)
+                                 end)
+                             end
+                         end)
+                    end)
+                end
+            end
+        end
+    end
+end)();
+
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if getgenv().Config['ClickAttack'] then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
+end)
+repeat wait(30) until game:IsLoaded(30) and game.Players.LocalPlayer
 _G.KaitanMode = true
+
+-- Candy Event
+_G.CandyConfigs = {
+    ExpX2 = true,
+    Trade500Fragment = true,
+    Trade200Fragment = false
+}
 shared.Team = "Pirates"
 getgenv().Configs = {
     FpsBoost = true,
@@ -7,7 +59,7 @@ getgenv().Configs = {
     BlockAllHop = false,
 
     FastAttack = true,
-    NewFastAttack = false,
+    NewFastAttack = true,
     NoAttackAnimation = true,
     
     StartKaitun = true,
@@ -21,12 +73,12 @@ getgenv().Configs = {
     AutoQuestFlower = true,
     AutoRaceV3 = false,
     AutoBartiloQuest = true,
-    AutoCursedCaptain = true,
+    AutoCursedCaptain = false,
     AutoDarkbeard = true,
     AutoFactory = true,
     AutoThirdSea = true,
     SkipGetItemGuitar = true, -- จะไม่ หาของทำ soul guiter ในโลก 2 เบบ หาจนกว่าจะได้ will not find item until get all item for do soul guiter ( open recommend เเนะนำให้เปิด )
-    AlliesFruit = {"Dragon-Dragon","Spirit-Spirit","Venom-Venom","Dough-Dough"}, -- จะไม่ใช้ผลพวกนี้ในการเปิดประตูไปโลก3
+    AlliesFruit = {"Shadow-Shadow","Dough-Dough","Kitsune-Kitsune","Dragon-Dragon","Spirit-Spirit","Venom-Venom","T-rex-T-rex","Control-Control"}, -- จะไม่ใช้ผลพวกนี้ในการเปิดประตูไปโลก3
     -- World 3
     AutoHallowScythe = true,
     AutoBuddySword = true,
@@ -58,19 +110,19 @@ getgenv().Configs = {
         -- ["V"] = 0.1, -- อันไหนไม่เอาลบออกไปเลย
     },
     AutoSwordMastery = true,
-    SelectRaritySword = {"Mythical","Legendary","Rare"}, -- Common , Uncommon,Rare,Legendary,Mythical
+    SelectRaritySword = {"Mythical"}, -- Common , Uncommon,Rare,Legendary,Mythical
     
-    SelectRedeemCodeLevel = 1,
+    SelectRedeemCodeLevel = 10,
     
     -- Raids
     
-    SelectRateFruitRaid = 1000000, -- if fruit price less u rate then we use it to auto raids
+    SelectRateFruitRai1000d = 000, -- if fruit price less u rate then we use it to auto raids
     LimitFragmentsRaids = 100000,
     
     -- Devil Fruit
         
-    SelectMainDF = {"Dragon-Dragon","Spirit-Spirit","Venom-Venom","Dough-Dough"}, -- ผลหลักที่จะกินเเทนผลรอง
-    SelectSubDF = {"Ice-Ice","Sand-Sand","Dark-Dark","Quake-Quake","Light-Light"}, -- ผลรองจะกินไว้ก่อนเเล้วพอผลหลักมีก้จะเปลียนไปกินผิดหลัก
+    SelectMainDF = {"Leopard-Leopard","Dough-Dough","Dragon-Dragon"}, -- ผลหลักที่จะกินเเทนผลรอง
+    SelectSubDF = {"Quake-Quake","Rumble-Rumble","Magma-Magma","Buddha-Buddha"}, -- ผลรองจะกินไว้ก่อนเเล้วพอผลหลักมีก้จะเปลียนไปกินผิดหลัก
     AllowEatDFInventory = false,
     StartSniper = true,
         
@@ -84,7 +136,7 @@ getgenv().Configs = {
     
     StartWebhook = true,
     WebhookURL = "",
-    WebhookSettings = "Send Every 10 min", -- "Send Every 10 min","Send On Level Max And Every 10 min"
+    WebhookSettings = "Send Every 1 min", -- "Send Every 1 min","Send On Level Max And Every 1 min"
     
     -- CPU
     
