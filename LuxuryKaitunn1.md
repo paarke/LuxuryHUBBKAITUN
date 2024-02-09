@@ -1,81 +1,7 @@
-getgenv().FixedFastAttackScript = true
-getgenv().Team = "Pirates"
-_G.Key = "LuxuryV2_15hz16cdxazfpa0ppamj"
-_G.DiscordId = "1122795311874711604"
-_G.KaitanMode = true
-shared.Team = "Pirates"
-getgenv().Configs = {
-    FpsBoost = true,
-    SkipFarm = true,
-    HopIfCantKill = true,
-    BlockAllHop = false,
-    FastAttack = true,
-    NewFastAttack = true,
-    NoAttackAnimation = true,
-    StartKaitun = true,
-    AutoPole = true,
-    AutoSaber = true,
-    AutoSecondSea = true,
-    AutoRengoku = true,
-    AutoQuestFlower = true,
-    AutoRaceV3 = false,
-    AutoBartiloQuest = true,
-    AutoCursedCaptain = true,
-    AutoDarkbeard = true,
-    AutoFactory = true,
-    AutoThirdSea = true,
-    SkipGetItemGuitar = true,
-    AlliesFruit = {"Kitsune-Kitsune","Dragon-Dragon","Leopard-Leopard"}, -- Add Mammoth or whatever
-    AutoHallowScythe = true,
-    AutoBuddySword = true,
-    AutoDoughKing = true,
-    AutoSpikeyTrident = true,
-    AutoTushita = true,
-    AutoEliteHunter = true,
-    AutoDarkDagger = true,
-    AutoYama = true,
-    AutoCanvander = true,
-    AutoSoulGuitar = true, 
-    AutoRainbowHaki = false,
-    AutoCursedDualKatana = true,
-    AutoGodHuman = true,
-    AutoSuperhuman = true,
-    AutoDeathStep = true,
-    AutoSharkmanKarate = true,
-    AutoElectricClaw = true,
-    AutoDargonTalon = true,
-    AutoDFMastery = true,
-    SettingsSkill = {
-        -- ["Z"] = 0.1,
-        -- ["X"] = 0.1,
-        -- ["C"] = 0.1,
-        -- ["V"] = 0.1,
-    },
-    AutoSwordMastery = true,
-    SelectRaritySword = {"Mythical","Legendary","Rare"},
-    SelectRedeemCodeLevel = 1,
-    SelectRateFruitRaid = 1000000,
-    LimitFragmentsRaids = 100000,
-    SelectMainDF = {""Dragon-Dragon","Spirit-Spirit","Venom-Venom","Dough-Dough"},
-    SelectSubDF = {""Ice-Ice","Sand-Sand","Dark-Dark","Quake-Quake","Light-Light"},
-    AllowEatDFInventory = false,
-    StartSniper = true,
-    RAMPort = 7963,
-    RAMPassword = "",
-    AutoDescription = false,
-    StartWebhook = false,
-    WebhookURL = "",
-    WebhookSettings = "",
-    LockFPS = 35,
-    LockFPSNow = true,
-    WhiteScreen = true
-}
--- Prevent 20 Minutes AFK
-local vu = game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-    vu:CaptureController()
-    vu:ClickButton2(Vector2.new())
-end)
+(getgenv()).Config = {
+ ["FastAttack"] = true,
+ ["ClickAttack"] = true
+} 
 
 coroutine.wrap(function()
 local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:Stop()
@@ -85,7 +11,7 @@ local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:S
                 if typeof(v) == "table" then
                     spawn(function()
                         game:GetService("RunService").RenderStepped:Connect(function()
-                            if getgenv().FixedFastAttackScript then
+                            if getgenv().Config['FastAttack'] then
                                  pcall(function()
                                      v.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
                                      v.activeController.attacking = false
@@ -104,6 +30,120 @@ local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)StopCamera:S
             end
         end
     end
-end)()
+end)();
 
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if getgenv().Config['ClickAttack'] then
+             pcall(function()
+                game:GetService'VirtualUser':CaptureController()
+			    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+            end)
+        end
+    end)
+end)
+repeat wait(30) until game:IsLoaded(30) and game.Players.LocalPlayer
+_G.KaitanMode = true
+
+-- Candy Event
+_G.CandyConfigs = {
+    ExpX2 = true,
+    Trade500Fragment = true,
+    Trade200Fragment = false
+}
+shared.Team = "Pirates"
+getgenv().Configs = {
+    FpsBoost = true,
+    SkipFarm = true,
+    HopIfCantKill = true,
+    BlockAllHop = false,
+
+    FastAttack = true,
+    NewFastAttack = true,
+    NoAttackAnimation = true,
+    
+    StartKaitun = true,
+    -- World 1
+    AutoPole = true, -- จะตีเเค่ถ้ามันเกิดไม่ได้ตีจนกว่าจะได้
+    AutoSaber = true,
+    
+    AutoSecondSea = true,
+    -- World 2
+    AutoRengoku = true,
+    AutoQuestFlower = true,
+    AutoRaceV3 = true,
+    AutoBartiloQuest = true,
+    AutoCursedCaptain = false,
+    AutoDarkbeard = true,
+    AutoFactory = true,
+    AutoThirdSea = true,
+    SkipGetItemGuitar = true, -- จะไม่ หาของทำ soul guiter ในโลก 2 เบบ หาจนกว่าจะได้ will not find item until get all item for do soul guiter ( open recommend เเนะนำให้เปิด )
+    AlliesFruit = {"Shadow-Shadow","Dough-Dough","Kitsune-Kitsune","Dragon-Dragon","Spirit-Spirit","Venom-Venom","T-rex-T-rex","Control-Control"}, -- จะไม่ใช้ผลพวกนี้ในการเปิดประตูไปโลก3
+    -- World 3
+    AutoHallowScythe = true,
+    AutoBuddySword = true,
+    AutoDoughKing = true,
+    AutoSpikeyTrident = true,
+    AutoTushita = true,
+    AutoEliteHunter = true,
+    AutoDarkDagger = true,
+    AutoYama = true,
+    AutoCanvander = true,
+    AutoSoulGuitar = true, 
+    AutoRainbowHaki = true,
+    AutoCursedDualKatana = true,
+    
+    -- Fighting Style 
+    
+    AutoGodHuman = true,
+    AutoSuperhuman = true,
+    AutoDeathStep = true,
+    AutoSharkmanKarate = true,
+    AutoElectricClaw = true,
+    AutoDargonTalon = true,
+    
+    AutoDFMastery = true,
+    SettingsSkill = { -- ถ้าไม่ใส่จะใช้ mode auto
+        -- ["Z"] = 0.1,
+        -- ["X"] = 0.1,
+        -- ["C"] = 0.1,
+        -- ["V"] = 0.1, -- อันไหนไม่เอาลบออกไปเลย
+    },
+    AutoSwordMastery = true,
+    SelectRaritySword = {"Mythical","Legendary"}, -- Common , Uncommon,Rare,Legendary,Mythical
+    
+    SelectRedeemCodeLevel = 1,
+    
+    -- Raids
+    
+    SelectRateFruitRaid = 1000000, -- if fruit price less u rate then we use it to auto raids
+    LimitFragmentsRaids = 100000,
+    
+    -- Devil Fruit
+        
+    SelectMainDF = {"Leopard-Leopard","Dough-Dough","Dragon-Dragon"}, -- ผลหลักที่จะกินเเทนผลรอง
+    SelectSubDF = {"Ice-Ice","Sand-Sand","Dark-Dark","Quake-Quake","Light-Light"}, -- ผลรองจะกินไว้ก่อนเเล้วพอผลหลักมีก้จะเปลียนไปกินผิดหลัก
+    AllowEatDFInventory = false,
+    StartSniper = true,
+        
+    -- RAM
+    
+    RAMPort = 7963,
+    RAMPassword = "",
+    AutoDescription = false,
+    
+    -- Webhook
+    
+    StartWebhook = true,
+    WebhookURL = "",
+    WebhookSettings = "Send Every 1 min", -- "Send Every 1 min","Send On Level Max And Every 1 min"
+    
+    -- CPU
+    
+    LockFPS = 20,
+    LockFPSNow = true,
+    WhiteScreen = false
+}
+_G.Key = "LuxuryV2_15hz16cdxazfpa0ppamj"
+_G.DiscordId = "1122795311874711604"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NightsTimeZ/RoyryX/main/Loader.lua"))()
