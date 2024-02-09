@@ -7,7 +7,7 @@ getgenv().Configs = {
     BlockAllHop = false,
 
     FastAttack = true,
-    NewFastAttack = true,
+    NewFastAttack = false,
     NoAttackAnimation = true,
     
     StartKaitun = true,
